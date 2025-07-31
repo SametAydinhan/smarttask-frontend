@@ -2,6 +2,7 @@
 import { useProjectsQuery, useCreateProject } from "@/hooks/useProjectQuery";
 import { useState } from "react";
 import type { Project } from "@/types/project";
+import Link from "next/link";
 
 export default function ProjectPage() {
   const { data: projects, isLoading, isError } = useProjectsQuery();
@@ -40,8 +41,24 @@ export default function ProjectPage() {
 
       <ul className='space-y-2'>
         {projects?.map((project: Project) => (
-          <li key={project.id} className='border rounded p-3 shadow-sm'>
-            {project.name}
+          <li
+            key={project.id}
+            className='border rounded p-4 shadow-sm bg-white hover:shadow-md transition'
+          >
+            <div className='flex items-center justify-between'>
+              <div>
+                <h2 className='text-lg font-semibold'>{project.name}</h2>
+                <p className='text-sm text-gray-500'>
+                  Project ID: {project.id}
+                </p>
+              </div>
+              <Link
+                href={`/projects/${project.id}`}
+                className='text-sm text-blue-600 hover:underline'
+              >
+                View Tasks →
+              </Link>
+            </div>
           </li>
         ))}
       </ul>
