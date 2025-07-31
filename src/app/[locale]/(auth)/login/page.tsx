@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginFormValues } from "@/lib/validation/authSchema";
 import { useLoginMutation } from "@/hooks/useAuthMutation";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/store/useAuth";
 import { AxiosError } from "axios";
 import { ErrorResponse } from "@/types/api";
 
@@ -14,10 +16,17 @@ export default function LoginPage() {
     formState: { errors },
   } = useForm<LoginFormValues>({ resolver: zodResolver(loginSchema) });
 
+  const router = useRouter();
+  const setAuth = useAuth((state) => state.setAuth);
   const loginMutation = useLoginMutation();
 
   const onSubmit = (data: LoginFormValues) => {
-    loginMutation.mutate(data);
+    loginMutation.mutate(data, {
+      onSuccess: (response) => {
+        setAuth(response.token, response.user);
+        router.push("/");
+      },
+    });
   };
 
   return (

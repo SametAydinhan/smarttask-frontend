@@ -24,7 +24,7 @@ export default function RegisterPage() {
   const onSubmit = (data: RegisterFormValues) => {
     mutation.mutate(data, {
       onSuccess: () => {
-        router.push("/dashboard"); // 🧭 Başarılı kayıt sonrası yönlendirme
+        router.push("/"); 
       },
     });
   };
