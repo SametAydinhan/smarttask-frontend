@@ -26,12 +26,14 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useTranslations } from "next-intl";
 
 interface ProjectWithTasks extends Project {
   tasks?: Task[];
 }
 
 export default function ProjectPage(): JSX.Element {
+  const t = useTranslations("ProjectPage");
   const {
     data: projects,
     isLoading,
@@ -97,7 +99,8 @@ export default function ProjectPage(): JSX.Element {
                 {project.name}
               </CardTitle>
               <CardDescription className='text-slate-500 mt-1'>
-                Created {new Date(project.createdAt).toLocaleDateString()}
+                {t("created")}{" "}
+                {new Date(project.createdAt).toLocaleDateString()}
               </CardDescription>
             </div>
             <Badge
@@ -117,32 +120,32 @@ export default function ProjectPage(): JSX.Element {
 
         <CardContent className='pt-0'>
           <div className='space-y-4'>
-            {/* Stats */}
             <div className='grid grid-cols-3 gap-3 text-center'>
               <div className='bg-slate-50 rounded-lg p-2'>
                 <div className='text-lg font-semibold text-slate-900'>
                   {totalTasks}
                 </div>
-                <div className='text-xs text-slate-600'>Total</div>
+                <div className='text-xs text-slate-600'>{t("stats.total")}</div>
               </div>
               <div className='bg-amber-50 rounded-lg p-2'>
                 <div className='text-lg font-semibold text-amber-600'>
                   {inProgressTasks}
                 </div>
-                <div className='text-xs text-amber-600'>Active</div>
+                <div className='text-xs text-amber-600'>
+                  {t("stats.active")}
+                </div>
               </div>
               <div className='bg-green-50 rounded-lg p-2'>
                 <div className='text-lg font-semibold text-green-600'>
                   {completedTasks}
                 </div>
-                <div className='text-xs text-green-600'>Done</div>
+                <div className='text-xs text-green-600'>{t("stats.done")}</div>
               </div>
             </div>
 
-            {/* Progress Bar */}
             <div className='space-y-2'>
               <div className='flex items-center justify-between text-sm'>
-                <span className='text-slate-600'>Progress</span>
+                <span className='text-slate-600'>{t("stats.progress")}</span>
                 <span className='font-medium text-slate-900'>
                   {completedTasks}/{totalTasks}
                 </span>
@@ -155,11 +158,10 @@ export default function ProjectPage(): JSX.Element {
               </div>
             </div>
 
-            {/* Action Button */}
             <Button asChild className='w-full mt-4' variant='outline'>
               <Link href={`/projects/${project.id}`}>
                 <FolderOpen className='mr-2 h-4 w-4' />
-                Manage Tasks
+                {t("manageTasks")}
                 <ArrowRight className='ml-2 h-4 w-4' />
               </Link>
             </Button>
@@ -191,7 +193,7 @@ export default function ProjectPage(): JSX.Element {
                     {project.name}
                   </h3>
                   <p className='text-sm text-slate-500'>
-                    Created {new Date(project.createdAt).toLocaleDateString()}
+                    {t("created")} {new Date(project.createdAt).toLocaleDateString()}
                   </p>
                 </div>
               </div>
@@ -202,26 +204,26 @@ export default function ProjectPage(): JSX.Element {
                 <div className='text-sm font-medium text-slate-900'>
                   {totalTasks}
                 </div>
-                <div className='text-xs text-slate-500'>Total Tasks</div>
+                <div className='text-xs text-slate-500'>{t("stats.totalTasks")}</div>
               </div>
               <div className='text-center'>
                 <div className='text-sm font-medium text-amber-600'>
                   {inProgressTasks}
                 </div>
-                <div className='text-xs text-slate-500'>In Progress</div>
+                <div className='text-xs text-slate-500'>{t("stats.inProgress")}</div>
               </div>
               <div className='text-center'>
                 <div className='text-sm font-medium text-green-600'>
                   {completedTasks}
                 </div>
-                <div className='text-xs text-slate-500'>Completed</div>
+                <div className='text-xs text-slate-500'>{t("stats.completed")}</div>
               </div>
               <Badge variant={completionRate === 100 ? "default" : "secondary"}>
                 {completionRate}%
               </Badge>
               <Button asChild variant='outline' size='sm'>
                 <Link href={`/projects/${project.id}`}>
-                  View Tasks
+                  {t("viewTasks")}
                   <ArrowRight className='ml-2 h-4 w-4' />
                 </Link>
               </Button>
@@ -240,11 +242,9 @@ export default function ProjectPage(): JSX.Element {
           <div className='flex items-center justify-between mb-6'>
             <div>
               <h1 className='text-3xl font-bold text-slate-900'>
-                Your Projects
+                {t("title")}
               </h1>
-              <p className='text-slate-600 mt-1'>
-                Manage and organize all your projects in one place
-              </p>
+              <p className='text-slate-600 mt-1'>{t("description")}</p>
             </div>
 
             <div className='flex items-center space-x-3'>
@@ -278,7 +278,7 @@ export default function ProjectPage(): JSX.Element {
                     htmlFor='project-name'
                     className='text-sm font-medium text-slate-700 mb-2 block'
                   >
-                    Create New Project
+                    {t("createLabel")}
                   </Label>
                   <Input
                     id='project-name'
@@ -300,12 +300,12 @@ export default function ProjectPage(): JSX.Element {
                   {createMutation.isPending ? (
                     <>
                       <Clock className='mr-2 h-4 w-4 animate-spin' />
-                      Creating...
+                      {t("creating")}
                     </>
                   ) : (
                     <>
                       <Plus className='mr-2 h-4 w-4' />
-                      Create Project
+                      {t("create")}
                     </>
                   )}
                 </Button>
@@ -313,7 +313,7 @@ export default function ProjectPage(): JSX.Element {
               {createMutation.isError && (
                 <p className='text-red-500 text-sm mt-2 flex items-center'>
                   <AlertTriangle className='h-4 w-4 mr-1' />
-                  Failed to create project. Please try again.
+                  {t("createError")}
                 </p>
               )}
             </CardContent>
@@ -326,7 +326,7 @@ export default function ProjectPage(): JSX.Element {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setSearchTerm(e.target.value)
               }
-              placeholder='Search projects...'
+              placeholder={t("search")}
               className='pl-10 border-slate-200 focus:border-blue-500 focus:ring-blue-500'
             />
           </div>
@@ -357,11 +357,10 @@ export default function ProjectPage(): JSX.Element {
             <CardContent className='flex flex-col items-center justify-center py-12'>
               <AlertTriangle className='h-12 w-12 text-red-400 mb-4' />
               <h3 className='text-lg font-semibold text-slate-900 mb-2'>
-                Failed to load projects
+                {t("error.title")}
               </h3>
               <p className='text-slate-600 text-center'>
-                There was an error loading your projects. Please try refreshing
-                the page.
+                {t("error.description")}
               </p>
             </CardContent>
           </Card>
@@ -376,11 +375,10 @@ export default function ProjectPage(): JSX.Element {
               <CardContent className='flex flex-col items-center justify-center py-12'>
                 <Search className='h-12 w-12 text-slate-400 mb-4' />
                 <h3 className='text-lg font-semibold text-slate-900 mb-2'>
-                  No projects found
+                  {t("searchEmpty.title")}
                 </h3>
                 <p className='text-slate-600 text-center'>
-                  No projects match your search criteria. Try adjusting your
-                  search terms.
+                  {t("searchEmpty.description")}
                 </p>
               </CardContent>
             </Card>
@@ -391,11 +389,10 @@ export default function ProjectPage(): JSX.Element {
             <CardContent className='flex flex-col items-center justify-center py-12'>
               <FolderOpen className='h-12 w-12 text-slate-400 mb-4' />
               <h3 className='text-lg font-semibold text-slate-900 mb-2'>
-                No projects yet
+                {t("noProjects.title")}
               </h3>
               <p className='text-slate-600 text-center mb-6 max-w-sm'>
-                Get started by creating your first project above. You can then
-                add tasks and track your progress.
+                {t("noProjects.description")}
               </p>
             </CardContent>
           </Card>
@@ -406,8 +403,9 @@ export default function ProjectPage(): JSX.Element {
           <div className='space-y-6'>
             <div className='flex items-center justify-between'>
               <p className='text-slate-600'>
-                Showing {filteredProjects.length} of {projects?.length ?? 0}{" "}
-                projects
+                {t("showingPrefix")} {filteredProjects.length}{" "}
+                {t("showingMiddle")} {projects?.length ?? 0}{" "}
+                {t("showingSuffix")}
               </p>
             </div>
 

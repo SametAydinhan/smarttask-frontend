@@ -11,7 +11,7 @@
     "english": "English",
     "turkish": "Turkish"
   },
-  "Header":{
+  "Header": {
     "logout": "Logout"
   },
   "Dashboard": {
@@ -24,7 +24,7 @@
     "recentProjects": "Recent Projects",
     "recentProjectsDescription": "Your most recently updated projects",
     "viewAll": "View All Projects",
-      "noProjects": {
+    "noProjects": {
       "title": "No projects yet",
       "description": "Get started by creating your first project and organizing your tasks",
       "button": "Create Your First Project"
@@ -34,6 +34,66 @@
     "active": "Active",
     "open": "Open",
     "created": "Created"
+  },
+  "ProjectPage": {
+    "title": "Your Projects",
+    "description": "Manage and organize all your projects in one place",
+    "createLabel": "Create New Project",
+    "placeholder": "Enter project name...",
+    "create": "Create Project",
+    "creating": "Creating...",
+    "createError": "Failed to create project. Please try again.",
+    "searchPlaceholder": "Search projects...",
+    "searchEmpty": {
+      "title": "No projects found",
+      "description": "No projects match your search criteria. Try adjusting your search terms."
+    },
+    "empty": {
+      "title": "No projects yet",
+      "description": "Get started by creating your first project above. You can then add tasks and track your progress."
+    },
+    "error": {
+      "title": "Failed to load projects",
+      "description": "There was an error loading your projects. Please try refreshing the page."
+    },
+    "stats": {
+      "total": "Total",
+      "active": "Active",
+      "done": "Done",
+      "progress": "Progress",
+      "totalTasks": "Total Tasks",
+      "inProgress": "In Progress",
+      "completed": "Completed"
+    },
+    "manageTasks": "Manage Tasks",
+    "viewTasks": "View Tasks",
+    "created": "Created",
+    "showingPrefix": "Showing",
+    "showingMiddle": "of",
+    "showingSuffix": "projects",
+    "search": "Search Projects..."
+  },
+  "ProjectDetailPage": {
+    "back": "Back to All Projects",
+    "loadingTitle": "Loading...",
+    "loadingDescription": "Please wait while project data loads.",
+    "headerTitle": "Manage all tasks for this project.",
+    "formLabel": "Create New Task",
+    "formPlaceholder": "Enter a title for the new task...",
+    "formButtonAdd": "Add Task",
+    "formButtonAdding": "Adding...",
+    "formError": "Failed to create task. Please try again.",
+    "statusChange": "Change status",
+    "status": {
+      "TODO": "Todo",
+      "IN_PROGRESS": "In Progress",
+      "DONE": "Done"
+    },
+    "created": "Created",
+    "errorTitle": "Failed to load tasks",
+    "errorMessage": "There was an error loading your tasks. Please try refreshing the page.",
+    "emptyTitle": "No tasks in this project yet",
+    "emptyMessage": "Get started by adding your first task above."
   }
 }
 

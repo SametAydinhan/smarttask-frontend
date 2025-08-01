@@ -34,6 +34,66 @@
     "active": "Aktif",
     "open": "Aç",
     "created": "Oluşturuldu"
+  },
+  "ProjectPage": {
+    "title": "Projelerin",
+    "description": "Tüm projelerini tek bir yerde yönet ve düzenle",
+    "createLabel": "Yeni Proje Oluştur",
+    "placeholder": "Proje adını gir...",
+    "create": "Projeyi Oluştur",
+    "creating": "Oluşturuluyor...",
+    "createError": "Proje oluşturulamadı. Lütfen tekrar deneyin.",
+    "searchPlaceholder": "Projelerde ara...",
+    "searchEmpty": {
+      "title": "Proje bulunamadı",
+      "description": "Arama kriterlerine uyan bir proje yok. Lütfen arama terimlerini değiştirin."
+    },
+    "empty": {
+      "title": "Henüz proje yok",
+      "description": "Yukarıdan ilk projeni oluşturarak başlayabilirsin. Daha sonra görev ekleyip ilerlemeyi takip edebilirsin."
+    },
+    "error": {
+      "title": "Projeler yüklenemedi",
+      "description": "Projeler yüklenirken bir hata oluştu. Lütfen sayfayı yenileyin."
+    },
+    "stats": {
+      "total": "Toplam",
+      "active": "Aktif",
+      "done": "Tamamlandı",
+      "progress": "İlerleme",
+      "totalTasks": "Toplam Görev",
+      "inProgress": "Devam Ediyor",
+      "completed": "Tamamlandı"
+    },
+    "manageTasks": "Görevleri Yönet",
+    "viewTasks": "Görevleri Görüntüle",
+    "created": "Oluşturulma",
+    "showingPrefix": "Projelerden",
+    "showingMiddle": "tanesinden",
+    "showingSuffix": "tanesi gösteriliyor",
+    "search": "Projeleri Ara..."
+  },
+  "ProjectDetailPage": {
+    "back": "Tüm Projelere Dön",
+    "loadingTitle": "Yükleniyor...",
+    "loadingDescription": "Lütfen proje verileri yüklenirken bekleyin.",
+    "headerTitle": "Bu projeye ait görevleri yönetin.",
+    "formLabel": "Yeni Görev Oluştur",
+    "formPlaceholder": "Yeni görev için bir başlık girin...",
+    "formButtonAdd": "Görev Ekle",
+    "formButtonAdding": "Ekleniyor...",
+    "formError": "Görev oluşturulamadı. Lütfen tekrar deneyin.",
+    "statusChange": "Durumu değiştir",
+    "status": {
+      "TODO": "Yapılacak",
+      "IN_PROGRESS": "Devam Ediyor",
+      "DONE": "Tamamlandı"
+    },
+    "created": "Oluşturulma",
+    "errorTitle": "Görevler yüklenemedi",
+    "errorMessage": "Görevler yüklenirken bir hata oluştu. Lütfen sayfayı yenileyin.",
+    "emptyTitle": "Bu projede henüz görev yok",
+    "emptyMessage": "Yukarıdan ilk görevinizi ekleyerek başlayın."
   }
 }
 
