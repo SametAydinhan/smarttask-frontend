@@ -286,7 +286,7 @@ export default function ProjectPage(): JSX.Element {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                       setProjectName(e.target.value)
                     }
-                    onKeyPress={handleKeyPress}
+                    onKeyUp={handleKeyPress}
                     placeholder='Enter project name...'
                     className='border-slate-200 focus:border-blue-500 focus:ring-blue-500'
                     disabled={createMutation.isPending}
@@ -319,7 +319,6 @@ export default function ProjectPage(): JSX.Element {
             </CardContent>
           </Card>
 
-          {/* Search */}
           <div className='relative mb-6'>
             <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-4 w-4' />
             <Input

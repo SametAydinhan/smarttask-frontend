@@ -4,5 +4,36 @@
     "email": "Email",
     "password": "Password",
     "submit": "Log in"
+  },
+  "LocaleSwitcher": {
+    "changeLanguage": "Change language",
+    "selectLanguage": "Select a language",
+    "english": "English",
+    "turkish": "Turkish"
+  },
+  "Header":{
+    "logout": "Logout"
+  },
+  "Dashboard": {
+    "welcome": "Welcome back,",
+    "description": "Here's what's happening with your projects today",
+    "totalProjects": "Total Projects",
+    "totalTasks": "Total Tasks",
+    "inProgressTasks": "In Progress",
+    "completedTasks": "Completed",
+    "recentProjects": "Recent Projects",
+    "recentProjectsDescription": "Your most recently updated projects",
+    "viewAll": "View All Projects",
+      "noProjects": {
+      "title": "No projects yet",
+      "description": "Get started by creating your first project and organizing your tasks",
+      "button": "Create Your First Project"
+    },
+    "progress": "Progress",
+    "tasks": "tasks",
+    "active": "Active",
+    "open": "Open",
+    "created": "Created"
   }
 }
+

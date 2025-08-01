@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
+import { useTranslations } from "next-intl";
 
 interface ProjectWithTasks extends Project {
   tasks?: Task[];
@@ -35,7 +36,7 @@ interface ProjectWithTasks extends Project {
 export default function DashboardPage(): JSX.Element | null {
   const { user, token, hasHydrated } = useAuth();
   const router = useRouter();
-
+  const t = useTranslations("Dashboard");
   const { data: projects, isLoading } = useProjectsQuery() as {
     data: ProjectWithTasks[] | undefined;
     isLoading: boolean;
@@ -78,19 +79,17 @@ export default function DashboardPage(): JSX.Element | null {
   return (
     <div className='min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30'>
       <Header />
-    {/* Main Content */}
+      {/* Main Content */}
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         {/* Welcome Section */}
         <div className='mb-8'>
           <div className='flex items-center space-x-3 mb-2'>
             <h1 className='text-3xl font-bold text-slate-900'>
-              Welcome back, {user.name}!
+              {t("welcome")} {user.name}!
             </h1>
             <span className='text-2xl'>👋</span>
           </div>
-          <p className='text-slate-600 text-lg'>
-            Here&#39;s what&#39;s happening with your projects today
-          </p>
+          <p className='text-slate-600 text-lg'>{t("description")}</p>
         </div>
 
         {/* Stats Cards */}
@@ -100,7 +99,7 @@ export default function DashboardPage(): JSX.Element | null {
               <div className='flex items-center justify-between'>
                 <div>
                   <p className='text-blue-100 text-sm font-medium'>
-                    Total Projects
+                    {t("totalProjects")}
                   </p>
                   <p className='text-3xl font-bold'>{totalProjects}</p>
                 </div>
@@ -114,7 +113,7 @@ export default function DashboardPage(): JSX.Element | null {
               <div className='flex items-center justify-between'>
                 <div>
                   <p className='text-slate-600 text-sm font-medium'>
-                    Total Tasks
+                    {t("totalTasks")}
                   </p>
                   <p className='text-3xl font-bold text-slate-900'>
                     {totalTasks}
@@ -130,7 +129,7 @@ export default function DashboardPage(): JSX.Element | null {
               <div className='flex items-center justify-between'>
                 <div>
                   <p className='text-slate-600 text-sm font-medium'>
-                    In Progress
+                    {t("inProgressTasks")}
                   </p>
                   <p className='text-3xl font-bold text-amber-600'>
                     {inProgressTasks}
@@ -146,7 +145,7 @@ export default function DashboardPage(): JSX.Element | null {
               <div className='flex items-center justify-between'>
                 <div>
                   <p className='text-slate-600 text-sm font-medium'>
-                    Completed
+                    {t("completedTasks")}
                   </p>
                   <p className='text-3xl font-bold text-green-600'>
                     {completedTasks}
@@ -163,16 +162,14 @@ export default function DashboardPage(): JSX.Element | null {
           <div className='flex items-center justify-between'>
             <div>
               <h2 className='text-2xl font-bold text-slate-900'>
-                Recent Projects
+                {t("recentProjects")}
               </h2>
-              <p className='text-slate-600'>
-                Your most recently updated projects
-              </p>
+              <p className='text-slate-600'>{t("recentProjectsDescription")}</p>
             </div>
             <div className='flex space-x-3'>
               <Button asChild variant='outline'>
                 <Link href='/projects'>
-                  View All Projects
+                  {t("viewAll")}
                   <ArrowRight className='ml-2 h-4 w-4' />
                 </Link>
               </Button>
@@ -221,7 +218,7 @@ export default function DashboardPage(): JSX.Element | null {
                             {project.name}
                           </CardTitle>
                           <CardDescription className='text-slate-500 mt-1'>
-                            Created{" "}
+                            {t("created")}{" "}
                             {new Date(project.createdAt).toLocaleDateString()}
                           </CardDescription>
                         </div>
@@ -242,9 +239,9 @@ export default function DashboardPage(): JSX.Element | null {
                     <CardContent className='pt-0'>
                       <div className='space-y-4'>
                         <div className='flex items-center justify-between text-sm'>
-                          <span className='text-slate-600'>Progress</span>
+                          <span className='text-slate-600'>{t("progress")}</span>
                           <span className='font-medium text-slate-900'>
-                            {completedCount}/{totalCount} tasks
+                            {completedCount}/{totalCount} {t("tasks")}
                           </span>
                         </div>
 
@@ -259,14 +256,14 @@ export default function DashboardPage(): JSX.Element | null {
                           <div className='flex space-x-4 text-xs text-slate-500'>
                             <span className='flex items-center'>
                               <Calendar className='h-3 w-3 mr-1' />
-                              {totalCount} tasks
+                              {totalCount} {t("tasks")}
                             </span>
                             {projectTasks.filter(
                               (task: Task) => task.status === "IN_PROGRESS"
                             ).length > 0 && (
                               <span className='flex items-center text-amber-600'>
                                 <AlertCircle className='h-3 w-3 mr-1' />
-                                Active
+                                {t("active")}
                               </span>
                             )}
                           </div>
@@ -278,7 +275,7 @@ export default function DashboardPage(): JSX.Element | null {
                             className='h-8 px-3 text-blue-600 hover:text-blue-700 hover:bg-blue-50'
                           >
                             <Link href={`/projects/${project.id}`}>
-                              Open
+                              {t("open")}
                               <ArrowRight className='ml-1 h-3 w-3' />
                             </Link>
                           </Button>
@@ -294,16 +291,15 @@ export default function DashboardPage(): JSX.Element | null {
               <CardContent className='flex flex-col items-center justify-center py-12'>
                 <FolderOpen className='h-12 w-12 text-slate-400 mb-4' />
                 <h3 className='text-lg font-semibold text-slate-900 mb-2'>
-                  No projects yet
+                  {t("noProjects.title")}
                 </h3>
                 <p className='text-slate-600 text-center mb-6 max-w-sm'>
-                  Get started by creating your first project and organizing your
-                  tasks
+                  {t("noProjects.description")}
                 </p>
                 <Button asChild>
                   <Link href='/projects/new'>
                     <Plus className='mr-2 h-4 w-4' />
-                    Create Your First Project
+                    {t("noProjects.button")}
                   </Link>
                 </Button>
               </CardContent>

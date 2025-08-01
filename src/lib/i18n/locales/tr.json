@@ -4,5 +4,36 @@
     "email": "E-posta",
     "password": "Parola",
     "submit": "Giriş"
+  },
+  "LocaleSwitcher": {
+    "changeLanguage": "Dili değiştir",
+    "selectLanguage": "Bir dil seçin",
+    "english": "İngilizce",
+    "turkish": "Türkçe"
+  },
+  "Header": {
+    "logout": "Çıkış yap"
+  },
+  "Dashboard": {
+    "welcome": "Hoş geldin, ",
+    "description": "Bugün projelerinle ilgili olanlar",
+    "totalProjects": "Toplam Projeler",
+    "totalTasks": "Toplam Görevler",
+    "inProgressTasks": "Devam Eden",
+    "completedTasks": "Tamamlanan",
+    "recentProjects": "Son Projeler",
+    "recentProjectsDescription": "En son güncellenen projelerin",
+    "viewAll": "Tüm Projeleri Görüntüle",
+    "noProjects": {
+      "title": "Henüz projen yok",
+      "description": "İlk projeni oluşturarak görevlerini organize etmeye başlayabilirsin",
+      "button": "İlk Projeni Oluştur"
+    },
+    "progress": "İlerleme",
+    "tasks": "görev",
+    "active": "Aktif",
+    "open": "Aç",
+    "created": "Oluşturuldu"
   }
 }
+
