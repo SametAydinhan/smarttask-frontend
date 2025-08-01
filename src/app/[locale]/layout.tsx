@@ -31,7 +31,6 @@ export default function RootLayout({
         cz-shortcut-listen="true"
       >
         <QueryProvider>
-          <Header />
           {children}
         </QueryProvider>
       </body>

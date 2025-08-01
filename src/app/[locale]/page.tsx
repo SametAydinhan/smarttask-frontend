@@ -26,6 +26,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Header from "@/components/Header";
 
 interface ProjectWithTasks extends Project {
   tasks?: Task[];
@@ -76,6 +77,7 @@ export default function DashboardPage(): JSX.Element | null {
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30'>
+      <Header />
     {/* Main Content */}
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         {/* Welcome Section */}
